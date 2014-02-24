@@ -2,7 +2,8 @@ package dcll.vfor.MySimpleTask;
 
 import static org.junit.Assert.*;
 
-import org.junit.After;
+import java.util.EmptyStackException;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,10 +18,7 @@ public class SimpleStackImplTest {
 		i = new Item();
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-	
+
 	@Test
 	public void testIsEmpty() throws Exception {
 		assertEquals(true,s.isEmpty());
@@ -38,5 +36,29 @@ public class SimpleStackImplTest {
 		s.pop();
 		assertEquals(0,s.getSize());
 	}
+	
+	@Test
+	public void testPush() throws Exception {
+		s.push(i);
+		assertEquals(i,s.pop());
+	}
+	
+	@Test (expected = EmptyStackException.class)
+	public void testPeek() throws Exception {
+		s.push(i);
+		assertEquals(i,s.peek());
+		assertEquals(1,s.getSize());
+		s.pop();
+		s.peek();
+	}
+	
+	@Test (expected = EmptyStackException.class)
+	public void testPop() throws Exception {
+		s.push(i);
+		assertEquals(i,s.pop());
+		assertEquals(0,s.getSize());
+		s.pop();
+	}
+	
 	
 }
