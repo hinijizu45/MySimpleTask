@@ -43,22 +43,24 @@ public class SimpleStackImplTest {
 		assertEquals(i,s.pop());
 	}
 	
-	@Test (expected = EmptyStackException.class)
-	public void testPeek() throws Exception {
-		s.push(i);
-		assertEquals(i,s.peek());
-		assertEquals(1,s.getSize());
-		s.pop();
-		s.peek();
-	}
-	
-	@Test (expected = EmptyStackException.class)
+	@Test //(expected = EmptyStackException.class)
 	public void testPop() throws Exception {
 		s.push(i);
 		assertEquals(i,s.pop());
 		assertEquals(0,s.getSize());
-		s.pop();
+		//s.pop();
 	}
+	
+	@Test //(expected = EmptyStackException.class)
+	public void testPeek() throws Exception {
+		s.push(i);
+		assertEquals(i,s.peek());
+		assertEquals(1,s.getSize());
+		//s.pop();
+		//s.peek();
+	}
+	
+
 	
 	
 }
